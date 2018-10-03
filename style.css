@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Krub|Roboto');
+
+/*
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Krub', sans-serif;
+*/
+
+body{
+    background-color: rgba(224, 223, 221, 0.842);
+    margin:0;
+    padding:0;
+    
+}
+
+.main-container{
+    margin:auto;
+    margin-top:200px;
+    background-color: white;
+    width:700px;
+    height: 500px;
+    overflow: hidden;
+}
+
+
+
+#name{
+    font: 40px bold, 'Roboto'
+}
+
+
+
+#data{
+    padding:20px;
+    font-family: 'Krub';
+    height: 100%;
+    margin-right: -50px; 
+    padding-right: 50px; 
+    overflow-y: scroll;
+   
+}
+
+.main-box{
+    display:flex;
+    border-bottom: solid 2px gray;
+    padding:5px;
+}
+
+.box{
+    flex:50%;
+}
+
+.box img{
+    height:200px;
+    border-radius: 50%;
+    border: solid 2px gray;
+}
+
+input{
+    padding:5px;
+    width:650px;
+    font-size: 20px;
+    font-family: 'Krub';
+    border:none;
+    border-bottom:solid 2px gray;
+}
+#tagInput{
+    width:100px;
+}
+
+.hidden{
+    display: none;
+} 
+
+button {
+    position: fixed;
+    bottom: 75%;
+    right: 32%; 
+}
+

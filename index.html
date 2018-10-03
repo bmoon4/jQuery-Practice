@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<!-- I couldn't finish the part 5 and part 4 is incomplete..
+but I was enjoying doing this. Thank you for giving me a chance to try the assessment! :)
+-->
+
+<head>
+    <title> Hatchways Challenge</title>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("https://www.hatchways.io/api/assessment/students", function (result) {
+                console.log(result);
+
+                $.each(result, function (i, students) {
+                    console.log(i);
+                    console.log(students.length);
+                    $.each(students, function (j, student) {
+                        console.log(j);
+                        let dummyGrade = [];
+                        let intGrade = student.grades.map(function (x) {
+                            let num = parseInt(x, 10);
+                            return dummyGrade.push(num);
+                        })
+
+                        let gradeSum = dummyGrade.reduce((a, b) => a + b);
+                        let avg = gradeSum / 8;
+
+
+                        $("#data")
+                            .append("<div class='main-box'>"  // main-box
+                                + "<div class='box'>" // box
+                                + "<img class='content' src= '" + student.pic + "'/>" + "</div>" //box
+                                + "<div class='box' id='targetName'> <p id='name'>" + student.firstName + " " + student.lastName + "</p>" //box
+                                //+ "<button>+</button>"
+                                + "<p class='content'>" + "Email: " + student.email + "</p>"
+                                + "<p class='content'>" + "Company: " + student.company + "</p>"
+                                + "<p class='content'>" + "Skill: " + student.skill + "</p>"
+                                + "<p class='content'>" + "Average: " + avg + "%" + "</p>"
+                                + "<p class='hidden'>"
+                                + "Test 1:" + dummyGrade[0] + "%" + "<br/>"
+                                + "Test 2:" + dummyGrade[1] + "%" + "<br/>"
+                                + "Test 3:" + dummyGrade[2] + "%" + "<br/>"
+                                + "Test 4:" + dummyGrade[3] + "%" + "<br/>"
+                                + "Test 5:" + dummyGrade[4] + "%" + "<br/>"
+                                + "Test 6:" + dummyGrade[5] + "%" + "<br/>"
+                                + "Test 7:" + dummyGrade[6] + "%" + "<br/>"
+                                + "Test 8:" + dummyGrade[7] + "%"
+                                + "</p>"
+                                + "<div class = 'hidden'>" // hidden
+                                + "<p id='tagSpace'>" + "</p>"
+                                + "<input id='tagInput' type='text'  onkeypress='addTag(event)' placeholder='Add a tag'/>"
+                                + "</div>"// hidden
+                                + "</div>" //box
+                                + "</div>" // main-box
+                            )
+                    })
+
+                });
+
+            });
+
+            $("button").on('click', function () {
+                console.log("Clicked!");
+                $(".hidden").toggle();
+            });
+
+        });
+
+
+        // function addTag(e) {
+        //     var input, target, tag, tagName;
+        //     target = document.getElementById("tagSpace");
+        //     input = document.getElementById("tagInput");
+        //     console.log(input.value);
+        //     if (e.key === "Enter") {
+        //         tagName = input.value;
+        //         tag = document.createElement("p");
+        //         tag.style.color = 'red';
+        //         tag.append(tagName);
+        //         target.append(tag);
+        //     }
+        // }
+
+
+        function findName() {
+            var input, filter, target, result, name;
+            input = document.getElementById("inputName");
+            filter = input.value.toUpperCase();
+            console.log(filter);
+            target = document.getElementById("data");
+            result = target.getElementsByClassName("main-box");
+            console.log(result.length);
+
+            for (let i = 0; i < result.length; i++) {
+                name = result[i].getElementsByTagName('p')[0];
+                if (name.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    result[i].style.display = "";
+                }
+                else {
+                    result[i].style.display = "none";
+                }
+            }
+        }
+
+        function findTag() {
+            // ...
+        }
+
+
+
+    </script>
+
+    <div class="main-container">
+        <div id="data">
+            <input type="text" id="inputName" onkeyup="findName()" placeholder="Search by name">
+            <input type="text" id="searchTag" onkeyup="findTag()" placeholder="Search by tag">
+            <button>+</button>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
