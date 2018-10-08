@@ -38,7 +38,7 @@ but I was enjoying doing this. Thank you for giving me a chance to try the asses
                                 + "<div class='box'>" // box
                                 + "<img class='content' src= '" + student.pic + "'/>" + "</div>" //box
                                 + "<div class='box' id='targetName'> <p id='name'>" + student.firstName + " " + student.lastName + "</p>" //box
-                                //+ "<button>+</button>"
+                                + "<button>+</button>"
                                 + "<p class='content'>" + "Email: " + student.email + "</p>"
                                 + "<p class='content'>" + "Company: " + student.company + "</p>"
                                 + "<p class='content'>" + "Skill: " + student.skill + "</p>"
@@ -66,13 +66,20 @@ but I was enjoying doing this. Thank you for giving me a chance to try the asses
 
             });
 
-            $("button").on('click', function () {
-                console.log("Clicked!");
-                $(".hidden").toggle();
-            });
+            // $("button").on('click', function (e) {
+            //     console.log("Clicked!");
+            //     e.preventDefault();
+            //     $(".hidden").toggle();
+            // });
 
         });
 
+
+        $(document).on('click', "button", function (e) {
+            console.log("Clicked!");
+            e.preventDefault();
+            $(".hidden").toggle();
+        });
 
         // function addTag(e) {
         //     var input, target, tag, tagName;
@@ -121,7 +128,7 @@ but I was enjoying doing this. Thank you for giving me a chance to try the asses
         <div id="data">
             <input type="text" id="inputName" onkeyup="findName()" placeholder="Search by name">
             <input type="text" id="searchTag" onkeyup="findTag()" placeholder="Search by tag">
-            <button>+</button>
+
 
         </div>
     </div>
