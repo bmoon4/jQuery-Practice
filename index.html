@@ -21,6 +21,7 @@ but I was enjoying doing this. Thank you for giving me a chance to try the asses
                 $.each(result, function (i, students) {
                     console.log(i);
                     console.log(students.length);
+
                     $.each(students, function (j, student) {
                         console.log(j);
                         let dummyGrade = [];
@@ -72,14 +73,16 @@ but I was enjoying doing this. Thank you for giving me a chance to try the asses
             //     $(".hidden").toggle();
             // });
 
+            $(document).on('click', "button", function (e) {
+                console.log("Clicked!");
+                e.preventDefault();
+                $(".hidden").toggle();
+            });
+
         });
 
 
-        $(document).on('click', "button", function (e) {
-            console.log("Clicked!");
-            e.preventDefault();
-            $(".hidden").toggle();
-        });
+
 
         // function addTag(e) {
         //     var input, target, tag, tagName;
